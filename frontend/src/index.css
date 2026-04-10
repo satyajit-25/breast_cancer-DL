@@ -1,0 +1,48 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pink:      #e91e8c;
+  --pink-lt:   #fce4f3;
+  --pink-dk:   #c2177a;
+  --green:     #0f9e5a;
+  --green-lt:  #e3f8ed;
+  --red:       #d32f2f;
+  --red-lt:    #fdecea;
+  --blue:      #1565c0;
+  --blue-lt:   #e3f0fb;
+  --gray:      #6b7280;
+  --border:    #e2e6ef;
+  --bg:        #f7f8fc;
+  --card:      #ffffff;
+  --text:      #1a1d2e;
+  --radius:    14px;
+  --shadow:    0 2px 20px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.fade-in { animation: fadeIn 0.4s ease forwards; }
