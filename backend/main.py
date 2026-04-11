@@ -31,7 +31,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173",   # Vite dev server
                    "http://localhost:3000",   # CRA dev server
-                   "*"],                      # allow all for deployment
+                   "https://*.vercel.app"],                      # allow all for deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
