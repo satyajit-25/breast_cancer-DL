@@ -4,7 +4,7 @@ import UploadSection from "./components/UploadSection"
 import ResultCard    from "./components/ResultCard"
 import GradCam       from "./components/GradCam"
 
-const API = "http://localhost:8000"
+const API = "https://breast-cancer-dl-8hwo.onrender.com"
 
 export default function App() {
   const [file,     setFile]     = useState(null)
