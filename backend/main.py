@@ -18,6 +18,8 @@ import tensorflow as tf
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.cm as cm
+from fastapi import Request
+from fastapi.responses import JSONResponse
 
 # ── App setup ─────────────────────────────────────────────────────
 app = FastAPI(
@@ -31,12 +33,23 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173",   # Vite dev server
                    "http://localhost:3000",   # CRA dev server
-                   "https://*.vercel.app"],                      # allow all for deployment
-    allow_credentials=True,
+                   "https://*.vercel.app",
+                    "*"],                      # allow all for deployment
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+@app.options("/predict")
+async def options_predict(request: Request):
+    return JSONResponse(
+        content={},
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "*",
+        }
+    )
 # ── Constants ─────────────────────────────────────────────────────
 MODEL_PATH  = "model/breast_cancer_cnn.keras"
 IMG_SIZE    = (224, 224)
